@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :teams
 
   get '/api/users/like', to: 'users#like_by_name'
+  post '/api/events/new', to: 'events#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

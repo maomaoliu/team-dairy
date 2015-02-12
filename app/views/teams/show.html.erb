@@ -1,9 +1,28 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, "Dairy of #{@team.name}" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
+<div class="container">
+<header class="banner">
+  <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+  Team Dairy
+</header>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<div class="content">
+  <div class="team-name"><h1><%= @team.name %> Team</h1></div>
+
+  <div class="latest-events">
+    <div class="subtitle">Latest events</div>
+  </div>
+
+  <div class="new-event">
+    <div class="subtitle">Add new event</div>
+  </div>
+
+  <div class="time-line">
+    <div class="subtitle">Team time line</div>
+  </div>
+
+  <div class="likes list">
+    <div class="subtitle">Likes List</div>
+  </div>
+</div>
+</div>

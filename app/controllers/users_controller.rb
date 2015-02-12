@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :like]
 
   # GET /users
   # GET /users.json
@@ -59,6 +59,12 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def like
+    @user.like = @user.like + 1
+    @user.save
+    respond_to { |format| format.json { render json: @user.like } }
   end
 
   private

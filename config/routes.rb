@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :events
 
-  resources :users
+  resources :users do
+    get 'like', on: :member
+  end
 
   resources :teams
 

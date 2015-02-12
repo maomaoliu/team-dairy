@@ -23,6 +23,15 @@
 
   <div class="likes list">
     <div class="subtitle">Likes List</div>
+    <table>
+      <% @team.users.each do |user| %>
+        <tr id="user-<%= user.id %>">
+          <td><%= user.name %></td>
+          <td><button type="button" onclick="add_one_like(<%= user.id %>);">like</button></td>
+          <td class="like"><%= user.like %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 </div>

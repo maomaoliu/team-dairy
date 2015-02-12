@@ -13,4 +13,4 @@ tmp
 target/
 db/schema.rb
 vendor/
-
+**/*.sqlite3

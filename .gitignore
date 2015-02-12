@@ -1,0 +1,16 @@
+tmp/
+pkg/
+.bundle/
+.idea/
+coverage/
+packer_cache/
+.bin/
+log
+*tags
+tmp
+**/.DS_STORE
+.rake_tasks~
+target/
+db/schema.rb
+vendor/
+

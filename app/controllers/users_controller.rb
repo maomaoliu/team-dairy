@@ -62,9 +62,22 @@ class UsersController < ApplicationController
   end
 
   def like
-    @user.like = @user.like + 1
-    @user.save
+    add_one_like(@user)
     respond_to { |format| format.json { render json: @user.like } }
+  end
+
+  def like_by_name
+    search_name = "%#{params[:user_name]}%"
+    users = User.where('name LIKE ?', search_name)
+    if users.count == 1
+      user = users.take
+      add_one_like(user)
+      render json: { id: user.id, like: user.like }.to_json
+    elsif users.count == 0
+      render json: {error: "user #{params[:user_name]} not found."}.to_json
+    else
+      render json: {error: 'multiple users.', users: users.map(&:name)}.to_json
+    end
   end
 
   private
@@ -76,5 +89,10 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :like)
+    end
+
+    def add_one_like(user)
+      user.like = user.like + 1
+      user.save
     end
 end

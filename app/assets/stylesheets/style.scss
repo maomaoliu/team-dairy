@@ -29,11 +29,6 @@ Primary style
     max-width: 100%;
   }
 
-  h1, h2 {
-    font-family: "Open Sans", sans-serif;
-    font-weight: bold;
-  }
-
   /* --------------------------------
 
   Modules - reusable parts of our design
@@ -87,7 +82,7 @@ Primary style
 
   .cd-timeline-block {
     position: relative;
-    margin: 2em 0;
+    margin: 1em 0;
   }
   .cd-timeline-block:after {
     content: "";
@@ -116,8 +111,8 @@ Primary style
     position: absolute;
     top: 0;
     left: 0;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
   }
@@ -142,10 +137,10 @@ Primary style
   }
   @media only screen and (min-width: 1170px) {
     .cd-timeline-img {
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
       left: 50%;
-      margin-left: -30px;
+      margin-left: -20px;
       /* Force Hardware Acceleration in WebKit */
       -webkit-transform: translateZ(0);
       -webkit-backface-visibility: hidden;
@@ -277,17 +272,15 @@ Primary style
     }
     .cd-timeline-content p {
       font-size: 16px;
-      font-size: 2rem;
     }
     .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
       font-size: 14px;
-      font-size: 0.875rem;
     }
   }
   @media only screen and (min-width: 1170px) {
     .cd-timeline-content {
       margin-left: 0;
-      padding: 1.6em;
+      padding: 0.3em 1em;
       width: 45%;
     }
     .cd-timeline-content::before {
@@ -303,7 +296,7 @@ Primary style
       position: absolute;
       width: 100%;
       left: 122%;
-      top: 6px;
+      top: 4px;
       font-size: 16px;
       font-size: 1.5rem;
     }

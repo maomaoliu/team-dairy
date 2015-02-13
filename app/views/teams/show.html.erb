@@ -7,52 +7,61 @@
   </header>
 
   <div class="content">
-    <div class="team-name"><h1><%= @team.name %> Team</h1></div>
 
-    <div class="new-event row">
-      <div class="subtitle">Add new event</div>
-        <div class="form-group form-horizontal" id="post-event">
-          <label class="col-sm-2 control-label">Message</label>
-          <div class="col-sm-7">
-            <textarea class="form-control" rows="2"></textarea>
-          </div>
-          <div class="col-sm-3">
-            <button type="button" class="btn btn-default" onclick="post_event();">Post</button>
-          </div>
+    <div class="team-name row"><h1><%= @team.name %> Team</h1></div>
+
+    <div class="row">
+
+      <div class="col-sm-7">
+        <div class="time-line row">
+          <div class="subtitle">Team time line</div>
+          <section id="cd-timeline" class="cd-container">
+            <% @event_all.each do |event| %>
+              <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-picture">
+                  <%= image_tag "cd-icon-picture.svg" %>
+                </div>
+                <div class="cd-timeline-content">
+                  <p><%= event.message %><p>
+                  <span class="cd-date"><%= event.created_at %></span>
+                </div>
+              </div>
+            <% end %>
+          </section>
         </div>
-      <div class="post-result"></div>
-    </div>
+      </div>
 
-    <div class="time-line row">
-      <div class="subtitle">Team time line</div>
-      <section id="cd-timeline" class="cd-container">
-        <% @event_all.each do |event| %>
-          <div class="cd-timeline-block">
-            <div class="cd-timeline-img cd-picture">
-              <%= image_tag "cd-icon-picture.svg" %>
+      <div class="col-sm-5">
+        <div class="new-event row">
+          <div class="subtitle">Post a new event</div>
+          <div class="form-group form-horizontal" id="post-event">
+            <div class="col-sm-12">
+              <textarea class="form-control" rows="2"></textarea>
             </div>
-            <div class="cd-timeline-content">
-              <p><%= event.message %><p>
-              <span class="cd-date"><%= event.created_at %></span>
+            <br>
+            <div class="col-sm-12 text-right">
+              <button type="button" class="btn btn-default" onclick="post_event();">Post</button>
             </div>
           </div>
-        <% end %>
-      </section>
-    </div>
+          <div class="post-result"></div>
+        </div>
 
-    <div class="likes list row">
-      <div class="subtitle">Likes List</div>
-      <table>
-        <% @team.users.each do |user| %>
-          <tr id="user-<%= user.id %>">
-            <td><%= user.name %></td>
-            <td>
-              <button type="button" onclick="add_one_like(<%= user.id %>);">like</button>
-            </td>
-            <td class="like"><%= user.like %></td>
-          </tr>
-        <% end %>
-      </table>
+        <div class="likes list row">
+          <div class="subtitle">Likes List</div>
+          <table class="table table-striped">
+            <% @team.users.each do |user| %>
+              <tr id="user-<%= user.id %>">
+                <td><%= user.name %></td>
+                <td>
+                  <span><a href="" onclick="add_one_like(<%= user.id %>);"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a></span>
+                  <span class="like"><%= user.like %></span>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
-# Team Dairy
+# Team Diary
 ---------------
 
-`Team Dairy` is a web app to help team using record the team growing up.
+`Team Diary` is a web app to help team using record the team growing up.
 
 The principles are:
 
@@ -9,7 +9,7 @@ The principles are:
 - Easy to integrate with other systems.  
 - The contents posted to the system are simple and brief.
 
-See the [TODO list](https://github.com/maomaoliu/team-dairy/issues).
+See the [TODO list](https://github.com/maomaoliu/team-diary/issues).
 
 
 To integrate with other system, can use api here:

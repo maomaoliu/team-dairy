@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-team = Team.create(name: 'Team Dairy Team')
+team = Team.create(name: 'Team Diary Team')
 jesse = User.create(name: 'Jesse', team: team)
 xiu = User.create(name: 'Xiu', team: team)
 lu = User.create(name: 'Lu', team: team)

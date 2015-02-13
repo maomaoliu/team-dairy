@@ -14,3 +14,4 @@ target/
 db/schema.rb
 vendor/
 **/*.sqlite3
+public/

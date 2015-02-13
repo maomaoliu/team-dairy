@@ -1,4 +1,4 @@
-class TeamsController < ApplicationController
+class TeamsController < EventsController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   # GET /teams
@@ -10,6 +10,8 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @event_all=Event.all
+    @event=Event.new
   end
 
   # GET /teams/new

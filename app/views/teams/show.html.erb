@@ -33,5 +33,64 @@
       <% end %>
     </table>
   </div>
+
+
+  <%= form_for(@event) do |f| %>
+      <% if @event.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+            <ul>
+              <% @event.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+          <div class="field">
+            <%= f.label :message %><br>
+            <%= f.text_field :message %>
+          </div>
+          <div class="field">
+            <%= f.label :image %><br>
+            <%= f.text_field :image %>
+          </div>
+          <td><button type="button" onclick="add_event">submit</button><td>
+            <%= f.submit%>
+      </div>
+  <% end %>
+
+
+
+  <section id="cd-timeline" class="cd-container">
+
+        <% @event_all.each  do |event| %>
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-picture">
+                <%=image_tag "cd-icon-picture.svg"%>
+              </div> <!-- cd-timeline-img -->
+              <div class="cd-timeline-content">
+                <p><%= event.message %><p>
+                <a href="#0" class="cd-read-more"><%= event.image %></a>
+                <span class="cd-date"><%= event.created_at %></span>
+              </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+
+        <!--<div class="cd-timeline-block">-->
+        <!--<div class="cd-timeline-img cd-movie bounce-in">-->
+        <!--<img src="img/cd-icon-movie.svg" alt="Movie">-->
+        <!--</div> &lt;!&ndash; cd-timeline-img &ndash;&gt;-->
+        <% end %>
+
+
+    <!--<div class="cd-timeline-content bounce-in">-->
+    <!--<h2>Final Section</h2>-->
+    <!--<p>This is the content of the last section</p>-->
+    <!--<span class="cd-date">Feb 26</span>-->
+    <!--</div> &lt;!&ndash; cd-timeline-content &ndash;&gt;-->
+    <!--</div> &lt;!&ndash; cd-timeline-block &ndash;&gt;-->
+  </section>
+
 </div>
 </div>

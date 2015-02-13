@@ -7,6 +7,5 @@ root.add_one_like = (user_id) ->
   $.ajax({
     url: '/users/' + user_id + '/like',
     success: (like_number) ->
-      console.log(like_number)
       $('#user-' + (user_id) + ' .like').text(like_number)
   })

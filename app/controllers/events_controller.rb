@@ -25,10 +25,10 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    if @event.save
+    if !@event.message.blank? && @event.save
       render json: { message: 'Event was successfully created.'}
     else
-      render json: { error: @event.errors}
+      render json: { error: 'Event post failed, check your message.'}
     end
   end
 

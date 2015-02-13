@@ -1,80 +1,58 @@
 <% content_for :title, "Dairy of #{@team.name}" %>
 
 <div class="container">
-<header class="banner">
-  <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-  Team Dairy
-</header>
+  <header class="banner">
+    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+    Team Dairy
+  </header>
 
-<div class="content">
-  <div class="team-name"><h1><%= @team.name %> Team</h1></div>
+  <div class="content">
+    <div class="team-name"><h1><%= @team.name %> Team</h1></div>
 
-  <div class="new-event">
-    <div class="subtitle">Add new event</div>
-  </div>
-
-  <div class="time-line">
-    <div class="subtitle">Team time line</div>
-    <section id="cd-timeline" class="cd-container">
-
-      <% @event_all.each  do |event| %>
-        <div class="cd-timeline-block">
-          <div class="cd-timeline-img cd-picture">
-            <%=image_tag "cd-icon-picture.svg"%>
+    <div class="new-event row">
+      <div class="subtitle">Add new event</div>
+        <div class="form-group form-horizontal" id="post-event">
+          <label class="col-sm-2 control-label">Message</label>
+          <div class="col-sm-7">
+            <textarea class="form-control" rows="2"></textarea>
           </div>
-          <div class="cd-timeline-content">
-            <p><%= event.message %><p>
-            <span class="cd-date"><%= event.created_at %></span>
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-default" onclick="post_event();">Post</button>
           </div>
         </div>
+      <div class="post-result"></div>
+    </div>
 
-      <% end %>
-    </section>
+    <div class="time-line row">
+      <div class="subtitle">Team time line</div>
+      <section id="cd-timeline" class="cd-container">
+        <% @event_all.each do |event| %>
+          <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+              <%= image_tag "cd-icon-picture.svg" %>
+            </div>
+            <div class="cd-timeline-content">
+              <p><%= event.message %><p>
+              <span class="cd-date"><%= event.created_at %></span>
+            </div>
+          </div>
+        <% end %>
+      </section>
+    </div>
+
+    <div class="likes list row">
+      <div class="subtitle">Likes List</div>
+      <table>
+        <% @team.users.each do |user| %>
+          <tr id="user-<%= user.id %>">
+            <td><%= user.name %></td>
+            <td>
+              <button type="button" onclick="add_one_like(<%= user.id %>);">like</button>
+            </td>
+            <td class="like"><%= user.like %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
-
-  <div class="likes list">
-    <div class="subtitle">Likes List</div>
-    <table>
-      <% @team.users.each do |user| %>
-        <tr id="user-<%= user.id %>">
-          <td><%= user.name %></td>
-          <td><button type="button" onclick="add_one_like(<%= user.id %>);">like</button></td>
-          <td class="like"><%= user.like %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-
-
-  <%= form_for(@event) do |f| %>
-      <% if @event.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-            <ul>
-              <% @event.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
-
-          <div class="field">
-            <%= f.label :message %><br>
-            <%= f.text_field :message %>
-          </div>
-          <div class="field">
-            <%= f.label :image %><br>
-            <%= f.text_field :image %>
-          </div>
-          <td><button type="button" onclick="add_event">submit</button><td>
-            <%= f.submit%>
-      </div>
-  <% end %>
-
-
-
-
-
-</div>
 </div>

@@ -7,4 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 team = Team.create(name: 'Team Dairy Team')
-%w(Jesse Xiu Lu).each { |name| User.create(name: name, team: team) }
+jesse = User.create(name: 'Jesse', team: team)
+xiu = User.create(name: 'Xiu', team: team)
+lu = User.create(name: 'Lu', team: team)
+
+Event.create(message: 'The team is created today!', created_at: 2.weeks.ago, user: jesse)
+Event.create(message: 'We have a big dinner, very exciting.', created_at: 1.week.ago, user: xiu)
+Event.create(message: 'First mile stone.', created_at: 5.days.ago, user: lu)

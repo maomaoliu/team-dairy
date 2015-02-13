@@ -9,16 +9,27 @@
 <div class="content">
   <div class="team-name"><h1><%= @team.name %> Team</h1></div>
 
-  <div class="latest-events">
-    <div class="subtitle">Latest events</div>
-  </div>
-
   <div class="new-event">
     <div class="subtitle">Add new event</div>
   </div>
 
   <div class="time-line">
     <div class="subtitle">Team time line</div>
+    <section id="cd-timeline" class="cd-container">
+
+      <% @event_all.each  do |event| %>
+        <div class="cd-timeline-block">
+          <div class="cd-timeline-img cd-picture">
+            <%=image_tag "cd-icon-picture.svg"%>
+          </div>
+          <div class="cd-timeline-content">
+            <p><%= event.message %><p>
+            <span class="cd-date"><%= event.created_at %></span>
+          </div>
+        </div>
+
+      <% end %>
+    </section>
   </div>
 
   <div class="likes list">
@@ -63,34 +74,7 @@
 
 
 
-  <section id="cd-timeline" class="cd-container">
 
-        <% @event_all.each  do |event| %>
-            <div class="cd-timeline-block">
-              <div class="cd-timeline-img cd-picture">
-                <%=image_tag "cd-icon-picture.svg"%>
-              </div> <!-- cd-timeline-img -->
-              <div class="cd-timeline-content">
-                <p><%= event.message %><p>
-                <a href="#0" class="cd-read-more"><%= event.image %></a>
-                <span class="cd-date"><%= event.created_at %></span>
-              </div> <!-- cd-timeline-content -->
-            </div> <!-- cd-timeline-block -->
-
-        <!--<div class="cd-timeline-block">-->
-        <!--<div class="cd-timeline-img cd-movie bounce-in">-->
-        <!--<img src="img/cd-icon-movie.svg" alt="Movie">-->
-        <!--</div> &lt;!&ndash; cd-timeline-img &ndash;&gt;-->
-        <% end %>
-
-
-    <!--<div class="cd-timeline-content bounce-in">-->
-    <!--<h2>Final Section</h2>-->
-    <!--<p>This is the content of the last section</p>-->
-    <!--<span class="cd-date">Feb 26</span>-->
-    <!--</div> &lt;!&ndash; cd-timeline-content &ndash;&gt;-->
-    <!--</div> &lt;!&ndash; cd-timeline-block &ndash;&gt;-->
-  </section>
 
 </div>
 </div>

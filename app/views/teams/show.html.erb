@@ -16,7 +16,7 @@
         <div class="time-line row">
           <div class="subtitle">Team time line</div>
           <section id="cd-timeline" class="cd-container">
-            <% @event_all.each do |event| %>
+            <% @event_all.reverse.each do |event| %>
               <div class="cd-timeline-block">
                 <div class="cd-timeline-img cd-picture">
                   <%= image_tag "cd-icon-picture.svg" %>
